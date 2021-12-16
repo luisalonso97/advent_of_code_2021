@@ -16,22 +16,6 @@ const get_movement_scalar = (type, line) => {
   return parseInt(match.groups.scalar);
 }
 
-const calculate_scalar = (movements, type) => {
-  return R.reduce(
-    (acc, line) => acc + get_movement_scalar(type, line),
-    0, filter_raw_movement(movements, type)
-  );
-}
-
-const calculate_answer = raw_movements => {
-  const calc_scalar_of = R.partial(calculate_scalar, [raw_movements])
-
-  const x_scalar = calc_scalar_of('FORWARD');
-  const y_scalar = calc_scalar_of('DOWN') - calc_scalar_of('UP');
-
-  return x_scalar * y_scalar;
-}
-
 const main = () => {
   const answer = R.pipe(read_input_file, calculate_answer)();
   console.log(answer)
