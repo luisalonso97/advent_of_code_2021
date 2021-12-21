@@ -42,7 +42,7 @@ const calculate_answer = raw_movements => {
 
 const main = () => {
   const answer = R.pipe(read_input_file, calculate_answer)();
-  console.log(answer)
+  console.log(answer);
 }
 
 main();

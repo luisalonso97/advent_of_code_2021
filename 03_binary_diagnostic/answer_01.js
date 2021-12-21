@@ -12,7 +12,7 @@ const calculate_answer = raw_diagnostics => {
       R.addIndex(R.forEach)(
         (diag, idx) => {
           if (bit_count[idx] < most_common_scale) {
-            if (diag === '1') bit_count[idx] += 1;
+            if (R.identical(diag, '1')) bit_count[idx] += 1;
           }
         }, raw_diagnostic
       );
@@ -35,7 +35,7 @@ const calculate_answer = raw_diagnostics => {
 
 const main = () => {
   const answer = R.pipe(read_input_file, calculate_answer)();
-  console.log(answer)
+  console.log(answer);
 }
 
 main();
